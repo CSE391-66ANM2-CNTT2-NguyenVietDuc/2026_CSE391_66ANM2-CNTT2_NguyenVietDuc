@@ -1,0 +1,160 @@
+body{
+margin:0;
+font-family:Arial;
+background:#f2f2f2;
+}
+
+/* NAVBAR */
+
+.navbar{
+background:#1f252a;
+color:white;
+padding:12px 20px;
+display:flex;
+align-items:center;
+gap:15px;
+border-bottom:2px solid #1e90ff;
+}
+
+.navbar span{
+color:#ccc;
+}
+
+.search{
+margin-left:auto;
+}
+
+.search input{
+padding:6px;
+border-radius:4px;
+border:none;
+}
+
+.search button{
+padding:6px 10px;
+background:#333;
+color:white;
+border:1px solid #666;
+border-radius:4px;
+}
+
+/* MAIN */
+
+.main-box{
+border:2px solid #1e90ff;
+padding:20px;
+background:#fafafa;
+}
+
+/* HEADER */
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px;
+}
+
+.add{
+background:#0d6efd;
+color:white;
+border:none;
+padding:6px 12px;
+border-radius:5px;
+}
+
+/* TABLE */
+
+.table-box{
+background:white;
+padding:15px;
+border-radius:8px;
+box-shadow:0 2px 6px rgba(0,0,0,0.15);
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+text-align:left;
+padding:10px;
+border-bottom:1px solid #eee;
+}
+
+td{
+padding:10px;
+border-bottom:1px solid #eee;
+}
+
+/* BUTTON */
+
+.edit{
+background:#ffc107;
+border:none;
+padding:5px 8px;
+border-radius:4px;
+}
+
+.delete{
+background:#dc3545;
+color:white;
+border:none;
+padding:5px 8px;
+border-radius:4px;
+}
+
+/* FORM */
+
+.popup{
+margin-top:30px;
+display:flex;
+justify-content:center;
+}
+
+.form{
+width:600px;
+border:2px solid #0d6efd;
+border-radius:5px;
+}
+
+.form-header{
+background:#0d6efd;
+color:white;
+padding:10px;
+}
+
+.row{
+display:flex;
+gap:10px;
+padding:10px;
+}
+
+.row input, select{
+flex:1;
+padding:8px;
+border:1px solid #ccc;
+border-radius:4px;
+}
+
+.actions{
+text-align:right;
+padding:10px;
+}
+
+.save{
+background:green;
+color:white;
+border:none;
+padding:6px 12px;
+border-radius:4px;
+}
+
+.cancel{
+background:gray;
+color:white;
+border:none;
+padding:6px 12px;
+border-radius:4px;
+}
