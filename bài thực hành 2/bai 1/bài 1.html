@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập Flexbox Form</title>
+    <style>
+        /* PHẦN CSS */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            padding: 40px 20px;
+            background-color: #fdfdfd;
+            display: flex;
+            justify-content: center;
+        }
+
+        .wrapper {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* Tiêu đề bài tập màu xanh nhạt */
+        .exercise-title {
+            background-color: #b3e5fc;
+            padding: 12px 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            border-radius: 2px;
+        }
+
+        /* Khung bao ngoài của Form */
+        .form-container {
+            border: 1px solid #333;
+            padding: 40px;
+            background-color: #fff;
+        }
+
+        .form-intro {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 25px;
+        }
+
+        /* --- CẤU TRÚC FLEXBOX --- */
+        .flex-row {
+            display: flex;
+            gap: 20px; /* Tạo khoảng cách giữa các cột */
+            margin-bottom: 20px;
+            flex-wrap: wrap; /* Tự động xuống hàng nếu màn hình nhỏ */
+        }
+
+        .flex-item {
+            flex: 1; /* Chia đều không gian cho các item trong hàng */
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+            outline-color: #2196F3;
+        }
+
+        /* Dành cho ô chiếm toàn bộ chiều rộng */
+        .full-width {
+            flex: 0 0 100%;
+        }
+
+        textarea.flex-item {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        /* Hàng cuối cùng: Nút bấm và Ghi chú */
+        .flex-footer {
+            display: flex;
+            justify-content: space-between; /* Đẩy 2 phần tử về 2 đầu */
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .btn-send {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-send:hover {
+            background-color: #1976D2;
+        }
+
+        .required-note {
+            color: #777;
+            font-style: italic;
+            font-size: 14px;
+        }
+
+        /* Responsive cho điện thoại */
+        @media (max-width: 600px) {
+            .flex-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .flex-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <h2 class="exercise-title">BÀI TẬP 1: Xây dựng bố cục form sau sử dụng Flexbox</h2>
+
+        <div class="form-container">
+            <p class="form-intro">Get in touch with us by filling contact form below</p>
+            
+            <form action="#">
+                <div class="flex-row">
+                    <input type="text" class="flex-item" placeholder="* Enter your full name" required>
+                    <input type="email" class="flex-item" placeholder="* Enter your email address" required>
+                </div>
+
+                <div class="flex-row">
+                    <input type="text" class="flex-item full-width" placeholder="Enter your subject">
+                </div>
+
+                <div class="flex-row">
+                    <textarea class="flex-item full-width" placeholder="* Your message here..." required></textarea>
+                </div>
+
+                <div class="flex-footer">
+                    <button type="submit" class="btn-send">Send message</button>
+                    <span class="required-note">* Please fill all required form field, thanks!</span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

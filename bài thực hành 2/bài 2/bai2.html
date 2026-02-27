@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Landing Page</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== RESET ===== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* ===== HEADER ===== */
+header{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 20px;
+    border:3px solid #ff8c00;
+    background:rgba(0,0,0,0.2);
+    z-index:100;
+}
+
+.logo{
+    font-family:'Luckiest Guy', cursive;
+    font-size:26px;
+    color:#ffff00;
+    font-style:italic;
+    text-shadow:2px 2px 0 #000;
+    letter-spacing:1px;
+}
+
+nav{
+    border:1px solid #ffcc00;
+    padding:4px 10px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#ffff00;
+    font-size:12px;
+    font-weight:bold;
+    margin-left:12px;
+    text-transform:uppercase;
+}
+ 
+/* ===== HERO ===== */
+.hero{
+    min-height:65vh;
+    background:
+    linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)),
+    url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border : 4px solid pink ;
+    padding: 80px 20px;
+}
+
+.hero-content{
+    background:rgba(0,0,0,0.65);
+    padding:30px 5%;
+    max-width: 800px;
+    width: 90%;
+    border-radius:12px;
+    text-align:center;
+    color:white;
+    box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
+.hero-content h1{
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    margin-bottom:8px;
+}
+
+.hero-content p{
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:18px;
+    padding:8px 22px;
+    background:#ffff00;
+    color:#000;
+    text-decoration:none;
+    font-weight:bold;
+    border-radius:6px;
+    font-size:13px;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:white;
+}
+
+/* ===== HIGHLIGHTS - PHẦN QUAN TRỌNG ĐÃ CHỈNH SỬA ===== */
+.highlights{
+    background:#e0fbfc;
+    padding:40px 0;
+    text-align:center;
+    border: 6px solid pink ; 
+}
+
+.destination-container{
+    display:flex;
+    justify-content:center;
+    /* Loại bỏ wrap để ảnh không nhảy xuống dòng khi zoom */
+    flex-wrap: nowrap; 
+    gap:10px;
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 10px;
+}
+
+.card{
+    /* Ép các card luôn cùng một hàng và co giãn đều nhau */
+    flex: 1; 
+    min-width: 0; /* Cho phép card co lại nhỏ hơn nội dung của nó */
+}
+
+.card img{
+    width:100%;
+    height: 140px; /* Cố định chiều cao ảnh dẹt cho đẹp */
+    object-fit:cover;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.card-info{
+    margin-top:10px;
+    font-size: 10px; /* Giảm cỡ chữ để không bị tràn khi zoom */
+    font-weight:bold;
+    color:#888;
+    text-transform:uppercase;
+}
+
+.card-info span{
+    color:#00897b;
+}
+
+/* ===== FOOTER ===== */
+footer{
+    background:black;
+    padding:20px;
+    text-align:center;
+    border : 3px solid rgb(213, 155, 48);
+}
+
+/* ===== MEDIA QUERIES ĐÃ ĐƯỢC TỐI ƯU ĐỂ KHÔNG HỎNG KẾT CẤU ===== */
+@media (max-width: 768px) {
+    header {
+        padding: 10px;
+    }
+    
+    .logo {
+        font-size: 20px;
+    }
+
+    .hero-content {
+        padding: 20px 10px;
+    }
+
+    /* Vẫn giữ hàng ngang nhưng có thể cuộn nếu màn hình quá nhỏ */
+    .destination-container {
+        gap: 8px;
+        overflow-x: hidden; 
+    }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo">TRAVEL GOALS</div>
+    <nav>
+        <a href="#">Destinations</a>
+        <a href="#">About</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>JOE'S TRAVEL PAGE</h1>
+        <p>LET'S EXPLORE THE WORLD TOGETHER!</p>
+        <a href="#" class="btn">Discover places</a>
+    </div>
+</section>
+
+<section class="highlights">
+    <h2>HIGHLIGHTS</h2>
+    <div class="destination-container">
+        <div class="card">
+            <img src="miami.jpg" alt="Miami">
+            <div class="card-info">MIAMI <span>USA</span></div>
+        </div>
+        <div class="card">
+            <img src="munich.jpg" alt="Munich">
+            <div class="card-info">MUNICH <span>GERMANY</span></div>
+        </div>
+        <div class="card">
+            <img src="barcelona.jpg" alt="Barcelona">
+            <div class="card-info">BARCELONA <span>SPAIN</span></div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="social-icons">
+        <img src="facebook.png" alt="Facebook" style="width: 30px;">
+        <img src="insta.png" alt="Instagram" style="width: 30px; margin-left: 20px;">
+    </div>
+</footer>
+
+</body>
+</html>
