@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý điểm sinh viên - TLU</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; background-color: #f4f7f6; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h2 { color: #007bff; text-align: center; }
+        .input-group { background: #f9f9f9; padding: 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #eee; }
+        .row { display: flex; gap: 10px; margin-bottom: 15px; }
+        input, select { padding: 8px; border: 1px solid #ccc; border-radius: 4px; flex: 1; }
+        button#btnAdd { padding: 8px 20px; background-color: #28a745; color: white; border: none; cursor: pointer; border-radius: 4px; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+        th { background-color: #007bff; color: white; }
+        #sortScore { cursor: pointer; }
+        .highlight-weak { background-color: #fff4e5 !important; color: #d9534f; }
+        .summary { margin-top: 20px; font-weight: bold; background: #e9ecef; padding: 15px; border-radius: 6px; display: flex; justify-content: space-between; }
+        .btn-delete { background-color: #dc3545; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 3px; }
+        .no-result { color: #888; font-style: italic; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Trang quản lý điểm sinh viên</h2>
+
+    <div class="input-group">
+        <div class="row">
+            <input type="text" id="txtName" placeholder="Họ tên sinh viên">
+            <input type="number" id="txtScore" placeholder="Điểm (0-10)" step="0.1">
+            <button id="btnAdd">Thêm</button>
+        </div>
+        <div class="row">
+            <input type="text" id="txtSearch" placeholder="🔍 Tìm kiếm tên...">
+            <select id="selRank">
+                <option value="All">Tất cả xếp loại</option>
+                <option value="Giỏi">Giỏi</option>
+                <option value="Khá">Khá</option>
+                <option value="Trung bình">Trung bình</option>
+                <option value="Yếu">Yếu</option>
+            </select>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Họ tên</th>
+                <th id="sortScore">Điểm <span id="sortIcon">↕</span></th>
+                <th>Xếp loại</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody id="studentTableBody"></tbody>
+    </table>
+
+    <div class="summary" id="summaryArea">
+        <span>Tổng số sinh viên: 0</span>
+        <span>Điểm trung bình: 0.0</span>
+    </div>
+</div>
+
+<script src="bai1.js"></script>
+
+</body>
+</html>

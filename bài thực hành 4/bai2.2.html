@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Đặt Hàng Nâng Cao</title>
+    <style>
+        :root { --primary: #2563eb; --error: #dc2626; --bg: #f8fafc; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); display: flex; justify-content: center; padding: 40px; }
+        .card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); width: 100%; max-width: 500px; }
+        h2 { margin-top: 0; color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
+        .form-group { margin-bottom: 1.2rem; position: relative; }
+        label { display: block; font-weight: 600; margin-bottom: 5px; color: #475569; }
+        input[type="text"], input[type="number"], input[type="date"], select, textarea {
+            width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; transition: 0.2s;
+        }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--primary); ring: 2px rgba(37, 99, 235, 0.2); }
+        .error-msg { color: var(--error); font-size: 0.8rem; margin-top: 4px; display: none; }
+        .char-count { font-size: 0.75rem; text-align: right; color: #64748b; }
+        .total-box { background: #eff6ff; padding: 15px; border-radius: 8px; text-align: center; margin: 15px 0; }
+        .total-price { font-size: 1.4rem; font-weight: 800; color: var(--primary); }
+        button[type="submit"] { 
+            width: 100%; background: var(--primary); color: white; border: none; padding: 12px; 
+            border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 1rem;
+        }
+        /* Modal Style */
+        #overlay { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6); z-index: 99; }
+        #confirmModal { 
+            display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: white; padding: 25px; border-radius: 12px; z-index: 100; width: 90%; max-width: 400px; 
+        }
+        .modal-btns { display: flex; gap: 10px; margin-top: 20px; }
+        .btn-ok { background: var(--primary); color: white; flex: 1; border: none; padding: 10px; border-radius: 6px; cursor: pointer; }
+        .btn-cancel { background: #e2e8f0; color: #475569; flex: 1; border: none; padding: 10px; border-radius: 6px; cursor: pointer; }
+        .red { color: var(--error) !important; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>🛒 Đơn Hàng Mới</h2>
+    <form id="orderForm" novalidate>
+        <div class="form-group">
+            <label>Sản phẩm</label>
+            <select id="product">
+                <option value="">-- Chọn sản phẩm --</option>
+                <option value="laptop">Laptop Gaming (25.000.000đ)</option>
+                <option value="mouse">Chuột Không Dây (500.000đ)</option>
+                <option value="keyboard">Bàn Phím Cơ (1.200.000đ)</option>
+            </select>
+            <div class="error-msg" id="err-product">Vui lòng chọn một sản phẩm.</div>
+        </div>
+
+        <div class="form-group">
+            <label>Số lượng (1 - 99)</label>
+            <input type="number" id="quantity" value="1" min="1" max="99">
+            <div class="error-msg" id="err-quantity">Số lượng phải từ 1 đến 99.</div>
+        </div>
+
+        <div class="total-box">
+            <span>Tổng thanh toán:</span>
+            <div class="total-price" id="totalPrice">0đ</div>
+        </div>
+
+        <div class="form-group">
+            <label>Ngày giao hàng dự kiến</label>
+            <input type="date" id="deliveryDate">
+            <div class="error-msg" id="err-date">Ngày giao phải từ hôm nay và không quá 30 ngày.</div>
+        </div>
+
+        <div class="form-group">
+            <label>Địa chỉ nhận hàng</label>
+            <textarea id="address" rows="2" placeholder="Số nhà, tên đường, phường/xã..."></textarea>
+            <div class="error-msg" id="err-address">Địa chỉ cần ít nhất 10 ký tự.</div>
+        </div>
+
+        <div class="form-group">
+            <label>Ghi chú đơn hàng</label>
+            <textarea id="note" rows="2" placeholder="Lời nhắn cho shipper..."></textarea>
+            <div class="char-count" id="noteCount">0/200</div>
+            <div class="error-msg" id="err-note">Ghi chú không được vượt quá 200 ký tự.</div>
+        </div>
+
+        <div class="form-group">
+            <label>Phương thức thanh toán</label>
+            <label style="font-weight: normal;"><input type="radio" name="payment" value="COD"> Tiền mặt (COD)</label>
+            <label style="font-weight: normal;"><input type="radio" name="payment" value="Bank"> Chuyển khoản</label>
+            <label style="font-weight: normal;"><input type="radio" name="payment" value="E-Wallet"> Ví điện tử</label>
+            <div class="error-msg" id="err-payment">Vui lòng chọn phương thức thanh toán.</div>
+        </div>
+
+        <button type="submit">📦 XÁC NHẬN ĐẶT HÀNG</button>
+    </form>
+</div>
+
+<div id="overlay"></div>
+<div id="confirmModal">
+    <h3>Xác nhận đơn hàng?</h3>
+    <div id="summary"></div>
+    <div class="modal-btns">
+        <button class="btn-cancel" id="closeModal">Quay lại</button>
+        <button class="btn-ok" id="finalSubmit">Đồng ý đặt</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<div id="registration-container">
+    <form id="registerForm">
+        <h2>Đăng Ký Tài Khoản</h2>
+        
+        <div class="form-group">
+            <label>Họ và tên:</label>
+            <input type="text" id="fullname" placeholder="Nhập họ tên...">
+            <span class="error-msg" id="error-fullname"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Email:</label>
+            <input type="email" id="email" placeholder="example@gmail.com">
+            <span class="error-msg" id="error-email"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Số điện thoại:</label>
+            <input type="text" id="phone" placeholder="0xxxxxxxxx">
+            <span class="error-msg" id="error-phone"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Mật khẩu:</label>
+            <input type="password" id="password" placeholder="Tối thiểu 8 ký tự...">
+            <span class="error-msg" id="error-password"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Xác nhận mật khẩu:</label>
+            <input type="password" id="confirmPassword">
+            <span class="error-msg" id="error-confirmPassword"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Giới tính:</label>
+            <input type="radio" name="gender" value="Nam"> Nam
+            <input type="radio" name="gender" value="Nữ"> Nữ
+            <span class="error-msg" id="error-gender"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="checkbox" id="terms"> Tôi đồng ý với điều khoản
+            <span class="error-msg" id="error-terms"></span>
+        </div>
+
+        <button type="submit">Đăng ký</button>
+    </form>
+    <div id="success-msg" style="display: none;"></div>
+</div>
+<script src="bai2.1.js"></script>
+<style>
+    .error-msg { color: red; font-size: 0.8em; display: block; height: 1em; }
+    .form-group { margin-bottom: 15 profound; }
+    input.invalid { border: 1px solid red; }
+</style>
