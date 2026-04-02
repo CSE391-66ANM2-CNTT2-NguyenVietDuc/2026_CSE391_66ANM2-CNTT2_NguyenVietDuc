@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="tad.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark shadow-sm py-2">
+  <div class="container-fluid px-4">
+    
+    <div class="d-flex align-items-center">
+      <a class="navbar-brand fw-bold me-4" href="#">HộiThaoHub</a>
+      
+      <ul class="navbar-nav d-flex flex-row">
+        <li class="nav-item me-3">
+          <a class="nav-link active p-0" href="#">Trang chủ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-0 text-white-50" href="#">Giới thiệu         Danh sách </a>
+        </li>
+      </ul>
+    </div>
+
+    <form class="d-flex ms-auto align-items-center" role="search">
+      <input class="form-control form-control-sm border-0 me-2" 
+             style="width: 200px;" 
+             type="search" 
+             placeholder="tìm kiếm..." 
+             aria-label="Search">
+      
+      <button class="btn btn-outline-light btn-sm px-3 me-2" type="submit">Thêm Mới</button>
+
+      <button class="btn btn-success btn-sm text-nowrap" 
+              onclick="showForm()" 
+              type="button">+ thêm mới</button>
+    </form>
+    
+  </div>
+</nav>
+
+
+<!-- striped là cái hàng có màu nền khác biệt -->
+   <!-- bordered  là để thêm viền cho bảng -->
+    <!-- hover có tác dụng khi di chuột qua hàng -->
+     <div id="list-section"> <h1 class="text-center p-2">bảng điều khiển hội thảo  . theo dõi lịch , diễn giả  và các sự kiện</h1>
+           
+<table class="table  table-hover table-bordered">
+  
+  <thead>
+    <tr>
+      <th scope="col">STT</th>
+      <th scope="col">Diễn giả</th>
+      <th scope="col">Email</th>
+      <th scope="col">Ngày Tổ chức</th>
+      <th scope="col">Địa điểm</th>
+      <th scope="col">Tên Hội Thảo </th>    
+    </tr>
+  </thead>
+  <tbody id="student-list">
+    
+  </tbody>
+</table>
+</div>
+
+
+
+<section id="form-section" style="display: none;">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header p-3 bg-primary text-white">
+                    <h4 id="form-title" class="mb-0">Thêm sinh viên mới </h4>
+                    <!-- chỉ là thông tin để nhận biết  -->
+                </div>
+                
+                <div class="card-body p-4">
+                    <form id="student-form" novalidate>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Tên hội thảo</label>
+                                <input type="text" id="studentId" required class="form-control" placeholder="Nhập tên sự kiện">
+                            </div>
+                            
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Diễn giả </label>
+                                <input type="text" id="fullname"  required maxlength="30"  class="form-control" placeholder="Họ tên diễn giả">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Email</label>
+                                <input type="email" id="email" required class="form-control" placeholder="email@example.com">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Ngày tổ chức</label>
+                                <div class="col-md-7">
+                                    <label class="form-label small fw-bold">
+                                    </label><input type="date" id="date" class="form-control"></div>
+                                
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Địa Điểm </label>
+                                <select id="major" class="form-select">
+                                    <option value="">-- Chọn vị trí --</option>
+                                    <option value="HÀ Nội">Giảng đường A1 , Hà Nội </option>
+                                    <option value="Đà Nẵng">Hội Trường B , Đà nẵng </option>
+                                    <option value="HCM">Văn phòng TLU , TP.HCM</option>
+                                    <option value="Cần Thơ">Trung tâm CNTT , Cần Thơ</option>
+                                    <option value="trung ương">bệnh viện đa khoa  trung ương</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="text-end border-top pt-3">
+                            <button type="submit" class="btn btn-success px-4 me-2">Lưu</button>
+                            <button type="button" class="btn btn-secondary px-4" onclick="showList()">Hủy</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+     <script src="data.js"></script>
+    <script src="tad.js"></script>
+</body>
+</html>
